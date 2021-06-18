@@ -1,59 +1,72 @@
 package com.ugurhmz.petclinic.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
+
 @Entity
-@Table(name = "t_owner")
+@Table( name="t_owner")
 public class Owner {
 	
-	
-	
 
-	@Embeddable
-	public static class OwnerId implements Serializable {
-		
-		@Column(name="owner_firstname", nullable = false)
-		private String firstName;
-		
-		@Column(name="owner_lastname", nullable=false)
-		private String lastName;
-		
-		
-		// GETTER && SETTER
-		public String getFirstName() {
-			return firstName;
-		}
-
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
-
-		public String getLastName() {
-			return lastName;
-		}
-
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
-	
-	}
-	
 	@Id
-	private OwnerId id;
+	@GeneratedValue
+	private Long id;
+	
+	@Column( name = "first_name")
+	private String ownerFirstName;
+	
+	
+	@Column( name = "last_name")
+	private String ownerLastName;
+	
+	@Embedded		//iki tarafada koyduk,bunu koyduðumuza göre, diðerini koymadabiliriz.
+	private Address address;
 
-	public OwnerId getId() {
+	
+	
+	// GETTER  & SETTER
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(OwnerId id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getOwnerFirstName() {
+		return ownerFirstName;
+	}
+
+	public void setOwnerFirstName(String ownerFirstName) {
+		this.ownerFirstName = ownerFirstName;
+	}
+
+	public String getOwnerLastName() {
+		return ownerLastName;
+	}
+
+	public void setOwnerLastName(String ownerLastName) {
+		this.ownerLastName = ownerLastName;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	
+	
+	
 	
 	
 	

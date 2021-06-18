@@ -8,6 +8,7 @@
   <property name="hibernate.connection.username">sa</property>
   
   <mapping class="com.ugurhmz.petclinic.model.MyPet"/>
+  <mapping class="com.ugurhmz.petclinic.model.OwnerWithCompositePK"/>
   <mapping class="com.ugurhmz.petclinic.model.Owner"/>
  </session-factory>
 </hibernate-configuration>
