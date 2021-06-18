@@ -10,5 +10,6 @@
   <mapping class="com.ugurhmz.petclinic.model.MyPet"/>
   <mapping class="com.ugurhmz.petclinic.model.OwnerWithCompositePK"/>
   <mapping class="com.ugurhmz.petclinic.model.Owner"/>
+  <mapping class="com.ugurhmz.petclinic.model.Vet"/>
  </session-factory>
 </hibernate-configuration>
