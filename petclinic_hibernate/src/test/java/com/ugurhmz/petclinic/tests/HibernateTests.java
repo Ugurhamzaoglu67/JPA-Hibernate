@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import com.ugurhmz.petclinic.config.HibernateConfig;
 import com.ugurhmz.petclinic.model.MyPet;
+import com.ugurhmz.petclinic.model.Owner;
+import com.ugurhmz.petclinic.model.Owner.OwnerId;
 
 public class HibernateTests {
 	
@@ -94,6 +96,27 @@ public class HibernateTests {
 		
 	 }
 	 
+	 
+	 @Test
+	 public void testCompositePK() {
+		 Owner owner = new Owner();			
+		 
+		 OwnerId id = new OwnerId();
+		 id.setFirstName("Ugur");
+		 id.setLastName("Hmz");
+		 
+		 owner.setId(id);
+		 
+		 Session session = HibernateConfig.getSessionFactory().openSession();
+		 Transaction tx = session.getTransaction();
+		 
+		 tx.begin();
+		 session.persist(owner);
+		 
+		 tx.commit();
+		 session.close();
+		 
+	 }
 	 
 	
 }
