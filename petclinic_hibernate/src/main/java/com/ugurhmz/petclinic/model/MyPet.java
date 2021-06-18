@@ -7,20 +7,27 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
 @Entity
 @Table( name = "t_pet")
+@SequenceGenerator(name="seqGen", sequenceName="pet_sequence")
 public class MyPet {
 	
 	
 	@Id
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(generator="seqGen")
 	private Long id;
 	
-	@Basic
-	@Column( name = "pet_name")
+	
+	@Basic (optional = false)
+	@Column( name = "pet_name", nullable = false)
 	private String petName;
 
 	

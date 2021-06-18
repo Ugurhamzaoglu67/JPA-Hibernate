@@ -28,7 +28,7 @@ public class HibernateTests {
 		Transaction tx = session.beginTransaction();
 		
 		MyPet myPet = new MyPet();
-		myPet.setId(1L);			//ids for this class must be manually hatasý çözümü!
+		//myPet.setId(1L);			//ids for this class must be manually hatasý çözümü!  -> GeneratedValue kullarnýsan bunu yorumal.
 		
 		myPet.setPetName("Sarman");
 		session.persist(myPet);
@@ -60,6 +60,41 @@ public class HibernateTests {
 		 System.out.println(myPet);
 		
 	 }
+	 
+	 
+	 
+	 @Test
+	 public void testWithoutTX() {
+		 Session session = HibernateConfig.getSessionFactory().openSession();
+		 Transaction tx = session.getTransaction();
+		 tx.begin();
+		 
+		 MyPet myPet = new MyPet("Sarman",new Date());
+		 myPet.setId(1L);
+		 session.persist(myPet);
+		 
+		// session.flush();
+		 tx.commit();
+		 session.close();
+	 }
+	 
+	 
+	 @Test
+	 public void testCheckNullability() {
+		 Session session = HibernateConfig.getSessionFactory().openSession();
+		 Transaction tx = session.getTransaction();
+		 tx.begin();
+		 
+		 MyPet myPet = new MyPet();
+		 myPet.setId(1L);
+		 session.persist(myPet);
+		 
+		 tx.commit();
+		 session.close();
+		
+	 }
+	 
+	 
 	
 }
 

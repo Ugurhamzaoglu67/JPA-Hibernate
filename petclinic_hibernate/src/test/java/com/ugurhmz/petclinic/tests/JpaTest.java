@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import org.junit.Test;
 
 import com.ugurhmz.petclinic.config.JpaConfig;
+import com.ugurhmz.petclinic.model.MyPet;
 
 public class JpaTest {
 	
@@ -24,5 +25,27 @@ public class JpaTest {
 		JpaConfig.getEntityManagerFactory().close();
 	
 	}
+	
+	
+	@Test
+	public void testWithOutTX() {
+		EntityManager entityManager = JpaConfig.getEntityManagerFactory().createEntityManager();
+		EntityTransaction tx = entityManager.getTransaction();
+		
+		tx.begin();
+		
+		
+		MyPet myPet = new MyPet();
+		myPet.setId(1L);
+		myPet.setPetName("Sarman");
+		
+		entityManager.persist(myPet);
+		
+		//entityManager.flush();
+		
+		tx.commit();
+		entityManager.close();
+	}
+	
 
 }
