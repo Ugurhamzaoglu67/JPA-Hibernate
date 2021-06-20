@@ -3,6 +3,8 @@ package com.ugurhmz.petclinic.model;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -18,6 +20,12 @@ import javax.persistence.Table;
 public class Owner extends Person {
 	
 	
+	
+	@Enumerated(EnumType.ORDINAL)
+	private Rating rating;
+	
+	
+	
 	@Embedded		//iki tarafada koyduk,bunu koyduðumuza göre, diðerini koymadabiliriz.
 	private Address address;
 
@@ -30,7 +38,15 @@ public class Owner extends Person {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
 
+	public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+	
+	
 	
 }

@@ -11,5 +11,6 @@
   <mapping class="com.ugurhmz.petclinic.model.OwnerWithCompositePK"/>
   <mapping class="com.ugurhmz.petclinic.model.Owner"/>
   <mapping class="com.ugurhmz.petclinic.model.Vet"/>
+  <mapping class="com.ugurhmz.petclinic.model.Visit" />
  </session-factory>
 </hibernate-configuration>

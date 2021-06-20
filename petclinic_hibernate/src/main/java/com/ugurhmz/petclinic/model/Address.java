@@ -2,6 +2,11 @@ package com.ugurhmz.petclinic.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+
+
 
 @Embeddable
 public class Address {
@@ -14,6 +19,10 @@ public class Address {
 	@Column( table="t_address")
 	private String phone;
 	
+	
+	@Column(table="t_address", name="phone_type")
+	@Enumerated(EnumType.STRING)
+	private PhoneType phoneType;
 	
 	
 	// GETTER & SETTER
